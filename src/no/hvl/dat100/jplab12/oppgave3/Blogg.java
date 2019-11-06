@@ -6,31 +6,30 @@ import no.hvl.dat100.jplab12.oppgave1.*;
 
 public class Blogg {
 	
-private Innlegg[] alleInnlegg;
-private int nesteLedige;
-private int antall;
+protected Innlegg innleggstabell[];
+protected int nesteledige;
 
 
 	
 	public Blogg() {
-		alleInnlegg = new Innlegg[20];
-		nesteLedige = 0;
-		antall = 0;
+		this.innleggstabell = new Innlegg[20];
+		this.nesteledige = 0;
 
 	}
 
 	public Blogg(int lengde) {
-		alleInnlegg = new Innlegg[lengde];	
+		this.innleggstabell = new Innlegg[lengde];
+		this.nesteledige = 0;
 	}
 	
 	
 
 	public int getAntall() {
-		return this.antall;
+		return nesteledige;
 	}
 	
 	public Innlegg[] getSamling() {
-		return this.alleInnlegg;
+		return innleggstabell;
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
