@@ -15,8 +15,7 @@ private int antall;
 	public Blogg() {
 		alleInnlegg = new Innlegg[20];
 		nesteLedige = 0;
-		antall = 0; //
-	
+		antall = 0;
 
 	}
 
