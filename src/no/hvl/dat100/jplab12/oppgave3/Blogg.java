@@ -3,47 +3,109 @@ package no.hvl.dat100.jplab12.oppgave3;
 import no.hvl.dat100.jplab12.common.TODO;
 import no.hvl.dat100.jplab12.oppgave1.*;
 
+
 public class Blogg {
+	
+private Innlegg[] alleInnlegg;
+private int nesteLedige;
+private int antall;
 
-	// TODO: objektvariable 
 
+	
 	public Blogg() {
-		Innlegg[] innleggstabell;		
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		alleInnlegg = new Innlegg[20];
+		nesteLedige = 0;
+		antall = 0;
+	
+
 	}
 
 	public Blogg(int lengde) {
-		Innlegg[] innleggstabell = new Innlegg[lengde];
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		alleInnlegg = new Innlegg[lengde];	
 	}
+	
+	
 
 	public int getAntall() {
-		throw new UnsupportedOperationException(TODO.method());
+		return this.antall;
 	}
 	
 	public Innlegg[] getSamling() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return this.alleInnlegg;
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
+		Innlegg[] samling = getSamling();
+		
+		int i = 0;
+		int x = 0;
+		while(i < samling.length) {
+			
+			if(samling[i] == innlegg) {
+				x = i;
+			}
+			else {
+				x = -1;
+			}
+			i++;
+		}
+		
+		return x;
 
-		throw new UnsupportedOperationException(TODO.method());
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+		Innlegg[] samling = getSamling();
+		
+		int i = 0;
+		boolean x = false;
+		while(i < samling.length) {
+			
+			if(samling[i] == innlegg) {
+				x = true;
+			}
+		
+			i++;
+		}
+		
+		return x;
+
 	}
 
 	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
+		Innlegg[] samling = getSamling();
+		
+		int i = 0;
+		boolean x = false;
+		while(i < samling.length) {
+			if(samling[i] == null) {
+				x = true;
+			}
+			i++;
+		}
+		
+		return x;
+			
+		}
 
-	}
 	
 	public boolean leggTil(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
-	}
+		Innlegg[] samling = getSamling();
+		
+		int i = 0;
+		boolean x = false;
+		while(i < samling.length) {
+			if(samling[i].getId() == innlegg.getId()) {
+				x = true;
+			}
+			i++;
+		}
+		
+		return x;
+			
+		}
+	
 	
 	public String toString() {
 		throw new UnsupportedOperationException(TODO.method());
