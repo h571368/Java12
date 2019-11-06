@@ -8,10 +8,12 @@ public class Blogg {
 	// TODO: objektvariable 
 
 	public Blogg() {
+		Innlegg[] innleggstabell;		
 		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
 	}
 
 	public Blogg(int lengde) {
+		Innlegg[] innleggstabell = new Innlegg[lengde];
 		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
 	}
 
