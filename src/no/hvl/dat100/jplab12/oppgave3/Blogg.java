@@ -1,123 +1,95 @@
+
+  
 package no.hvl.dat100.jplab12.oppgave3;
 
 import no.hvl.dat100.jplab12.common.TODO;
 import no.hvl.dat100.jplab12.oppgave1.*;
 
-
 public class Blogg {
-	
-protected Innlegg[] innleggstabell;
-protected int nesteledige;
 
-
+	private Innlegg[] samling;
+	private int nesteLedig;
 	
+	
+
 	public Blogg() {
-		this.innleggstabell = new Innlegg[20];
-		this.nesteledige = 0;
-
+		this.samling = new Innlegg[20];
+		this.nesteLedig = 0;
 	}
 
 	public Blogg(int lengde) {
-		this.innleggstabell = new Innlegg[lengde];
-		this.nesteledige = 0;
+		this.samling = new Innlegg[lengde];
+		this.nesteLedig = 0;
 	}
-	
-	
 
 	public int getAntall() {
-		return nesteledige;
+		return nesteLedig;
 	}
 	
 	public Innlegg[] getSamling() {
-		return innleggstabell;
-	}
-	
-	public void setSamling(Innlegg[] innleggtab) {
-		this.innleggstabell = innleggtab;
+		return samling;
+
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
-		Innlegg[] samling = getSamling();
-		
 		int i = 0;
-		int x = 0;
-		while(i < samling.length) {
+		while (i < nesteLedig) {
+			if (samling[i].erLik(innlegg)) {
+				return i;
+				}
 			
-			if(samling[i] == innlegg) {
-				x = i;
-			}
-			else {
-				x = -1;
-			}
 			i++;
 		}
-		
-		return x;
-
+		return -1;
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		Innlegg[] samling = getSamling();
-		
-		int i = 0;
-		boolean x = false;
-		while(i < samling.length) {
-			
-			if(samling[i] == innlegg) {
-				x = true;
+		if (finnInnlegg(innlegg) == -1) {
+			return false;
 			}
 		
-			i++;
-		}
-		
-		return x;
-
+		return true;
 	}
 
 	public boolean ledigPlass() {
-		Innlegg[] samling = getSamling();
 		
 		int i = 0;
 		boolean x = false;
-		while(i < samling.length) {
+		int t = samling.length;
+	
+		while(i < t){
 			if(samling[i] == null) {
-				nesteledige = i;
+				nesteLedig = i;
+				t = i;
 				x = true;
-				
 			}
 			i++;
 		}
-		
-		return x;
-			
+		return x;	
 		}
-
 	
 	public boolean leggTil(Innlegg innlegg) {
 		
-		Innlegg[] samling = getSamling();
-		int i = 0;
-		boolean x = false;
-		while(i < samling.length) {
-			if(finnes(innlegg) == false && ledigPlass() == true) {
-			samling[nesteledige] = innlegg;
-			setSamling(samling);
-			
-			x = true;
+		if(!ledigPlass() || finnes(innlegg)) {
+			return false;
 			}
-			
-			i++;
-		}
 		
-		return x;
-			
+		else {
+			samling[nesteLedig] = innlegg;
+			nesteLedig++;
+			return true;
 		}
-	
+	}
 	
 	public String toString() {
+		
 		throw new UnsupportedOperationException(TODO.method());
 	}
 
+	
+	
+	
+	
 	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
@@ -141,3 +113,4 @@ protected int nesteledige;
 
 	}
 }
+
