@@ -32,6 +32,10 @@ protected int nesteledige;
 		return innleggstabell;
 	}
 	
+	public void setSamling(Innlegg[] innleggtab) {
+		this.innleggstabell = innleggtab;
+	}
+	
 	public int finnInnlegg(Innlegg innlegg) {
 		Innlegg[] samling = getSamling();
 		
@@ -77,7 +81,9 @@ protected int nesteledige;
 		boolean x = false;
 		while(i < samling.length) {
 			if(samling[i] == null) {
+				nesteledige = i;
 				x = true;
+				
 			}
 			i++;
 		}
@@ -88,15 +94,18 @@ protected int nesteledige;
 
 	
 	public boolean leggTil(Innlegg innlegg) {
-
-		Innlegg[] samling = getSamling();
 		
+		Innlegg[] samling = getSamling();
 		int i = 0;
 		boolean x = false;
 		while(i < samling.length) {
-			if(samling[i].getId() == innlegg.getId()) {
-				x = true;
+			if(finnes(innlegg) == false && ledigPlass() == true) {
+			samling[nesteledige] = innlegg;
+			setSamling(samling);
+			
+			x = true;
 			}
+			
 			i++;
 		}
 		
