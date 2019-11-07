@@ -6,7 +6,7 @@ import no.hvl.dat100.jplab12.oppgave1.*;
 
 public class Blogg {
 	
-protected Innlegg innleggstabell[];
+protected Innlegg[] innleggstabell;
 protected int nesteledige;
 
 
