@@ -9,8 +9,6 @@ public class Blogg {
 
 	private Innlegg[] samling;
 	private int nesteLedig;
-	
-	
 
 	public Blogg() {
 		this.samling = new Innlegg[20];
