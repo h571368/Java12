@@ -26,7 +26,6 @@ public class Blogg {
 	
 	public Innlegg[] getSamling() {
 		return samling;
-
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
@@ -35,7 +34,6 @@ public class Blogg {
 			if (samling[i].erLik(innlegg)) {
 				return i;
 				}
-			
 			i++;
 		}
 		return -1;
@@ -45,7 +43,6 @@ public class Blogg {
 		if (finnInnlegg(innlegg) == -1) {
 			return false;
 			}
-		
 		return true;
 	}
 
@@ -81,7 +78,19 @@ public class Blogg {
 	
 	public String toString() {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		String str = Integer.toString(nesteLedig) + "\n";
+		for(int i = 0; i < nesteLedig; i++) {
+			str += samling[i].toString();
+		}
+		
+		return str;
+		
+		//throw new UnsupportedOperationException(TODO.method());
+		
+		//En metode public String toString() som returnerer data i tabellen som en streng der første linje i strengen angir antall
+		//Innlegg-objekt i tabellen, eks., en tabell med to innlegg ( et tekst-innlegg og et bilde-innlegg):
+		//2\nTEKST\n1\nOle Olsen\n23-10-2019\n0\nen tekst\nBILDE\n2\nOline Olsen
+		//\n24-10-2019\n0\net bilde\nhttp://www.picture.com/oo.jpg\n
 	}
 
 	
