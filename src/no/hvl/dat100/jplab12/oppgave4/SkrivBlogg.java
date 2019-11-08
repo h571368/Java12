@@ -9,40 +9,33 @@ public class SkrivBlogg {
 
 	private static String MAPPE = System.getProperty("user.dir") + "/src/no/hvl/dat100/jplab12/tests/";
 
-	//public static boolean skriv(Blogg samling, String filnavn) {
-	public static boolean skriv(String filnavn) {
+	public static boolean skriv(Blogg samling, String filnavn) {
 
-		PrintWriter skriver = null;
+		PrintWriter writer = null;
 
-		String text = "Fuck yeah!";
 		String message = "Skriving av fil lyktes.";
-		//String text = samling.toString();
-		
+		String text = samling.toString();
+
 		boolean success = false;
 
 		try {
 
-			skriver = new PrintWriter(MAPPE + filnavn + ".txt");
-			skriver.println(text);
+			writer = new PrintWriter(MAPPE + filnavn + ".txt");
+			writer.println(text);
 			success = true;
-			
+
 		} catch (FileNotFoundException e) {
 
-			message = "Skriving av fil mislyktes. Faen.";
+			message = "Skriving av fil mislyktes.";
 			System.out.println(MAPPE + filnavn + ".txt");
-			
+
 		} finally {
 
-			if (skriver != null) skriver.close();
+			if (writer != null)
+				writer.close();
 			System.out.println(message);
 
 		}
 		return success;
-	}
-	
-	//for testing
-	public static void main(String[] args) {
-		boolean test = skriv("test");
-		System.out.println(test);
 	}
 }
